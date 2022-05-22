@@ -46,6 +46,7 @@ Default: 5.5px
 	--yellow: #fafa32;
 	--green: #32fa32;
 	--beige: #f7ede8;
+	--dark-beige: #c6beba;
 	--white-blue: #e4e6f1;
 	--pewter-blue: #81adc8;
 	--vermillion-red: #cd4631;
@@ -79,7 +80,7 @@ body {
 	align-items: center;
 	height: 9.6rem;
 	padding: 0 4.8rem;
-	background-color: var(--beige);
+	background-color: var(--white);
 }
 
 .logo {
@@ -137,37 +138,46 @@ body {
 /********************************/
 
 .section-hero {
-	padding: 4.8rem 0 9.6rem;
-	background-color: var(--beige);
+	padding: 9.6rem 0;
 }
 
-.hero-text-container {
-	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;
+.hero-background {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	min-height: 500px;
+	background: linear-gradient(134deg, var(--beige), var(--white) 99%);
+	transform: skewY(-3deg);
+	z-index: -1;
+}
+
+.hero {
+	display: flex;
+	justify-content: center;
 	align-items: center;
-	margin-bottom: 8rem;
+	gap: 4.8rem;
+	max-width: 130rem;
+	margin: 0 auto;
+	padding: 0 3.2rem;
 }
 
 .hero-text {
-	transition: all 0.3s;
+	flex: 1;
+	align-items: center;
 }
 
 .heading-primary {
 	margin: 0 auto 3.2rem;
-	text-align: center;
-	font-size: 8.6rem;
+	font-size: 7.4rem;
 	color: var(--vermillion-red);
 }
 
 .heading-primary span {
-	font-size: 5.2rem;
+	font-size: 4.8rem;
 	color: var(--black);
 }
 
 .hero-description {
-	max-width: 75%;
-	margin: 0 auto;
-	text-align: center;
 	font-size: 2rem;
 }
 
@@ -177,58 +187,28 @@ body {
 	color: var(--vermillion-red);
 }
 
-.hero-shape-swirl,
-.hero-stars {
-	max-width: 100%;
-}
-
-.hero-stars {
-	margin: 0 auto;
-}
-
 .hero-editor-container {
-	display: flex;
-	justify-content: center;
+	display: inline-flex;
+	position: relative;
+	flex: 0.6;
 }
 
 /********************************/
 /* ABOUT ME SECTION */
 /********************************/
 
-/* .editor {
-	max-width: 80rem;
-	width: 100%;
-	background-color: var(--pewter-blue);
-	font-size: 1.5rem;
-	font-family: monospace;
-	border-radius: 5px;
-	box-shadow: inset 0 0 0 3px var(--black);
+/* &:hover {
+    animation: zigzag 1s linear infinite;
+    background: linear-gradient(135deg, rgba($color,0.25) 0.25em, transparent 0.25em) -0.5em 0
+              , linear-gradient(225deg, rgba($color,0.25) 0.25em, transparent 0.25em) -0.5em 0
+              , linear-gradient(315deg, rgba($color,0.25) 0.25em, transparent 0.25em) 0 0
+              , linear-gradient(45deg, rgba($color,0.25) 0.25em, transparent 0.25em) 0 0;
+    background-size: 0.75em 0.75em;
+    color: adjust-hue($color,180);
+  }
 }
 
-.editor-buttons {
-	border-bottom: 3px solid var(--black);
-	padding: 10px;
-}
-
-.editor-button {
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	border-radius: 100%;
-}
-
-.editor-button:nth-child(1) {
-	background: var(--red);
-}
-
-.editor-button:nth-child(2) {
-	background: var(--yellow);
-}
-
-.editor-button:nth-child(3) {
-	background: var(--green);
-}
-
-.editor-content {
-	padding: 20rem;
-} */
+@keyframes zigzag {
+  100% {
+    background-position: 1em 0, 1em 0, -0.75em 0 , -0.75em 0;
+  } */

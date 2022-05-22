@@ -1,0 +1,66 @@
+.editor {
+	width: 100%;
+	position: absolute;
+	border-radius: 2px;
+	background-color: var(--beige);
+	box-shadow: inset 0 0 0 3px var(--black);
+	z-index: 5;
+}
+
+.editor-buttons {
+	padding: 10px;
+	background-color: var(--pewter-blue);
+	box-shadow: inset 0 0 0 3px var(--black);
+}
+
+.editor-button {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+}
+
+.editor-button:nth-child(1) {
+	background: var(--red);
+}
+
+.editor-button:nth-child(2) {
+	background: var(--yellow);
+}
+
+.editor-button:nth-child(3) {
+	background: var(--green);
+}
+
+.editor-content {
+	display: flex;
+	line-height: 1.5;
+	letter-spacing: normal;
+	padding-bottom: 3.2rem;
+}
+
+.hero-zigzag {
+	border-radius: 2px;
+	border: solid black 3px;
+	box-shadow: inset 0 0 0 3px var(--black);
+	transform: translate(75px, 75px);
+}
+
+.line-numbers {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 0 0 15px;
+	margin-right: 10px;
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: var(--vermillion-red);
+}
+
+.editor-text {
+	width: 100%;
+	padding: 10px 10px 0 0;
+	white-space: pre-wrap;
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: var(--vermillion-red);
+}
