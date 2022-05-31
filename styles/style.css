@@ -39,10 +39,20 @@ Default: 5.5px
 
 */
 
+/********************************/
+/* GLOBAL STYLES */
+/********************************/
+
 :root {
 	--white: #fff;
 	--black: #000;
+	--dark-gray: #1a1a1a;
 	--red: #fa3232;
+	--js-yellow: #e3ca27;
+	--ts-blue: #3178c6;
+	--go-turq: #007d9c;
+	--go-light: #8ec7d2;
+	--java-orange: #ffa518;
 	--yellow: #fafa32;
 	--green: #32fa32;
 	--beige: #f7ede8;
@@ -68,6 +78,20 @@ body {
 	font-family: Montserrat Alternates, sans-serif;
 	line-height: 1;
 	color: var(--black);
+}
+
+.btn {
+	width: 100%;
+	padding: 1.2rem 0;
+	border: none;
+	border-radius: 5.5px;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1.8rem;
+}
+
+.disabled {
+	cursor: none;
 }
 
 /********************************/
@@ -162,8 +186,8 @@ body {
 }
 
 .hero-text {
-	flex: 1;
 	align-items: center;
+	flex: 1;
 }
 
 .heading-primary {
@@ -188,27 +212,5 @@ body {
 }
 
 .hero-editor-container {
-	display: inline-flex;
-	position: relative;
-	flex: 0.6;
+	flex: 0.7;
 }
-
-/********************************/
-/* ABOUT ME SECTION */
-/********************************/
-
-/* &:hover {
-    animation: zigzag 1s linear infinite;
-    background: linear-gradient(135deg, rgba($color,0.25) 0.25em, transparent 0.25em) -0.5em 0
-              , linear-gradient(225deg, rgba($color,0.25) 0.25em, transparent 0.25em) -0.5em 0
-              , linear-gradient(315deg, rgba($color,0.25) 0.25em, transparent 0.25em) 0 0
-              , linear-gradient(45deg, rgba($color,0.25) 0.25em, transparent 0.25em) 0 0;
-    background-size: 0.75em 0.75em;
-    color: adjust-hue($color,180);
-  }
-}
-
-@keyframes zigzag {
-  100% {
-    background-position: 1em 0, 1em 0, -0.75em 0 , -0.75em 0;
-  } */

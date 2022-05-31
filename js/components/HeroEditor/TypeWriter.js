@@ -17,7 +17,6 @@ export default class TypeWriter {
     this.#addToQueue(resolve => {
       let i = 0;
       const interval = setInterval(() => {
-        console.log(string[i]);
         this.#element.append(string[i]);
         i++;
         if (i >= string.length) {
