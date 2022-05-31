@@ -39,10 +39,24 @@ Default: 5.5px
 
 */
 
+/********************************/
+/* GLOBAL STYLES */
+/********************************/
+
 :root {
 	--white: #fff;
 	--black: #000;
+	--dark-gray: #1a1a1a;
+	--red: #fa3232;
+	--js-yellow: #e3ca27;
+	--ts-blue: #3178c6;
+	--go-turq: #007d9c;
+	--go-light: #8ec7d2;
+	--java-orange: #ffa518;
+	--yellow: #fafa32;
+	--green: #32fa32;
 	--beige: #f7ede8;
+	--dark-beige: #c6beba;
 	--white-blue: #e4e6f1;
 	--pewter-blue: #81adc8;
 	--vermillion-red: #cd4631;
@@ -66,18 +80,40 @@ body {
 	color: var(--black);
 }
 
+.btn {
+	width: 100%;
+	padding: 1.2rem 0;
+	border: none;
+	border-radius: 5.5px;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1.8rem;
+}
+
+.disabled {
+	cursor: none;
+}
+
+/********************************/
+/* HEADER SECTION */
+/********************************/
+
 .header {
-	height: 9.6rem;
-	padding: 0 4.8rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: var(--beige);
+	height: 9.6rem;
+	padding: 0 4.8rem;
+	background-color: var(--white);
 }
 
 .logo {
 	height: 18rem;
 }
+
+/********************************/
+/* NAVIGATION SECTION */
+/********************************/
 
 .main-nav-list {
 	display: flex;
@@ -89,17 +125,17 @@ body {
 .main-nav-link:link,
 .main-nav-link:visited {
 	display: inline-block;
+	padding: 1.2rem 2.4rem;
+	border-radius: 5.5px;
 	text-decoration: none;
 	color: var(--black);
 	font-weight: 500;
-	font-size: 1.6rem;
+	font-size: 1.8rem;
 	transition: all 0.3s;
 }
 
 .main-nav-link.outline-cta:link,
 .outline:visited {
-	padding: 1.2rem 2.4rem;
-	border-radius: 5.5px;
 	/* Trick to add border inside */
 	box-shadow: inset 0 0 0 3px var(--black);
 }
@@ -111,8 +147,6 @@ body {
 
 .main-nav-link.nav-cta:link,
 .nav-cta:visited {
-	padding: 1.2rem 2.4rem;
-	border-radius: 5.5px;
 	color: var(--white);
 	background-color: var(--black);
 	box-shadow: 4.11px 4.11px 0 0 rgba(0, 0, 0, 0.25);
@@ -121,4 +155,62 @@ body {
 .main-nav-link.nav-cta:hover,
 .nav-cta:active {
 	box-shadow: 2.055px 2.055px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+/********************************/
+/* HERO SECTION */
+/********************************/
+
+.section-hero {
+	padding: 9.6rem 0;
+}
+
+.hero-background {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	min-height: 500px;
+	background: linear-gradient(134deg, var(--beige), var(--white) 99%);
+	transform: skewY(-3deg);
+	z-index: -1;
+}
+
+.hero {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4.8rem;
+	max-width: 130rem;
+	margin: 0 auto;
+	padding: 0 3.2rem;
+}
+
+.hero-text {
+	align-items: center;
+	flex: 1;
+}
+
+.heading-primary {
+	margin: 0 auto 3.2rem;
+	font-size: 7.4rem;
+	color: var(--vermillion-red);
+}
+
+.heading-primary span {
+	font-size: 4.8rem;
+	color: var(--black);
+}
+
+.hero-description {
+	font-size: 2rem;
+}
+
+.hero-link:visited,
+.hero-link:link {
+	text-decoration: none;
+	color: var(--vermillion-red);
+}
+
+.hero-editor-container {
+	flex: 0.7;
 }
