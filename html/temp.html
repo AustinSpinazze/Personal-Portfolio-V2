@@ -1,10 +1,5 @@
-import TypeWriter from './TypeWriter.js';
-import { JAVASCRIPT, TYPESCRIPT, GOLANG, JAVA } from '../../utils/constants.js';
-
-let typewriter;
-
-const template = document.createElement("template");
-template.innerHTML = /*html*/`
+<link rel="stylesheet" type="text/css" href="../../../styles/heroEditor.css" />
+<link rel="stylesheet" type="text/css" href="../../../styles/style.css" />
 <style>
 	.editor {
 		width: 100%;
@@ -71,20 +66,6 @@ template.innerHTML = /*html*/`
 		grid-auto-flow: column;
 		gap: 0.8rem;
 	}
-
-  .btn {
-	  width: 100%;
-	  padding: 1.2rem 0;
-	  border: none;
-	  border-radius: 5.5px;
-	  text-decoration: none;
-	  font-weight: 500;
-	  font-size: 1.8rem;
-  }
-
-  .disabled {
-	  cursor: none;
-  }
 
 	.javascript {
 		color: var(--js-yellow);
@@ -258,64 +239,3 @@ template.innerHTML = /*html*/`
 		</button>
 	</div>
 </div>
-`;
-
-export default class HeroEditor extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-  }
-
-  connectedCallback() {
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-    typewriter = new TypeWriter(
-      this.shadowRoot.querySelector('.editor-text'),
-      {
-        loop: false,
-        typingSpeed: 20,
-        deletingSpeed: 10,
-      }
-    );
-    this.writeJavaScript();
-  }
-
-  async writeJavaScript() {
-    this.disableButton(false);
-    await typewriter.deleteAll().typeString(JAVASCRIPT).start();
-    this.disableButton(true);
-  }
-
-  async writeTypeScript() {
-    this.disableButton(false);
-    await typewriter.deleteAll().typeString(TYPESCRIPT).start();
-    this.disableButton(true);
-  }
-
-  async writeGolang() {
-    this.disableButton(false);
-    await typewriter.deleteAll().typeString(GOLANG).start();
-    this.disableButton(true);
-  }
-
-  async writeJava() {
-    this.disableButton(false);
-    await typewriter.deleteAll().typeString(JAVA).start();
-    this.disableButton(true);
-  }
-
-  disableButton(state) {
-    let elements = this.shadowRoot.querySelectorAll('#lang-button');
-    elements.forEach((button) => {
-      console.log(button, state);
-      if (state) {
-        button.removeAttribute("disabled", "");
-        button.setAttribute("enabled", "");
-      } else {
-        button.removeAttribute("enabled", "");
-        button.setAttribute("disabled", "");
-      }
-    });
-  }
-}
-
-customElements.define("hero-editor", HeroEditor);

@@ -80,20 +80,6 @@ body {
 	color: var(--black);
 }
 
-.btn {
-	width: 100%;
-	padding: 1.2rem 0;
-	border: none;
-	border-radius: 5.5px;
-	text-decoration: none;
-	font-weight: 500;
-	font-size: 1.8rem;
-}
-
-.disabled {
-	cursor: none;
-}
-
 /********************************/
 /* HEADER SECTION */
 /********************************/
