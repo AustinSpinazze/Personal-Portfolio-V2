@@ -8,7 +8,7 @@ template.innerHTML = /*html*/`
 <link
 	rel="stylesheet"
 	type="text/css"
-	href="./js/components/HeroEditor/heroEditor.css"
+	href="../../../styles/heroEditor.css"
 />
 <link rel="stylesheet" type="text/css" href="../../../styles/style.css" />
 <div class="editor">
