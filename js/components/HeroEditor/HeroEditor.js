@@ -80,6 +80,42 @@ template.innerHTML = /*html*/`
 	  text-decoration: none;
 	  font-weight: 500;
 	  font-size: 1.8rem;
+    position: relative;
+  }
+
+  .btn--loading .btn-text {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  // .btn-text {
+  //   transition: all 0.2s;
+  // }
+
+  .btn--loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: btn-loading-spinner 1s ease infinite;
+  }
+
+  @keyframes btn-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
   }
 
   .disabled {
@@ -92,7 +128,7 @@ template.innerHTML = /*html*/`
 		box-shadow: inset 0 0 0 3px var(--js-yellow),
 			4.11px 4.11px 0 0 rgba(0, 0, 0, 0.25);
 		cursor: pointer;
-		transition: color 0.3s;
+		transition: all color 0.3s;
 	}
 
 	.javascript:hover,
@@ -115,6 +151,11 @@ template.innerHTML = /*html*/`
 		}
 	}
 
+  .javascript-loading {
+    background-color: var(--js-yellow);
+    pointer-events: none;
+  }
+
 	.typescript {
 		color: var(--ts-blue);
 		background-size: 100% 200%;
@@ -134,6 +175,11 @@ template.innerHTML = /*html*/`
 		background-position: 0 -100%;
 		color: white;
 	}
+
+  .typescript-loading {
+    background-position: 0 -100%;
+    pointer-events: none;
+  }
 
 	.golang {
 		color: var(--go-turq);
@@ -162,6 +208,11 @@ template.innerHTML = /*html*/`
 		}
 	}
 
+  .golang-loading {
+    background: var(--go-turq);
+    pointer-events: none;
+  }
+
 	.java {
 		color: var(--java-orange);
 		background: none;
@@ -169,7 +220,6 @@ template.innerHTML = /*html*/`
 			4.11px 4.11px 0 0 rgba(0, 0, 0, 0.25);
 		cursor: pointer;
 		position: relative;
-		transition: color 0.3s ease-in-out;
 	}
 
 	.java:before {
@@ -190,7 +240,7 @@ template.innerHTML = /*html*/`
 		top: 50%;
 		width: 0;
 		background: var(--java-orange);
-		transition: width, height, top, left, 0.3s ease-in-out;
+		transition: width, height, top, left, 0.2s ease-in-out;
 	}
 
 	.java:hover:before,
@@ -200,6 +250,10 @@ template.innerHTML = /*html*/`
 		top: 0;
 		width: 100%;
 	}
+
+  .java-loading {
+    background-color: var(--java-orange);
+  }
 </style>
 <div class="editor">
 	<div class="editor-buttons">
@@ -233,28 +287,28 @@ template.innerHTML = /*html*/`
 			class="btn javascript"
 			onclick="this.getRootNode().host.writeJavaScript()"
 		>
-			JavaScript
+			<span class="btn-text">JavaScript</span>
 		</button>
 		<button
 			id="lang-button"
 			class="btn typescript"
 			onclick="this.getRootNode().host.writeTypeScript()"
 		>
-			TypeScript
+			<span class="btn-text">TypeScript</span>
 		</button>
 		<button
 			id="lang-button"
 			class="btn golang"
 			onclick="this.getRootNode().host.writeGolang()"
 		>
-			Go
+			<span class="btn-text">Go</span>
 		</button>
 		<button
 			id="lang-button"
 			class="btn java"
 			onclick="this.getRootNode().host.writeJava()"
 		>
-			Java
+			<span class="btn-text">Java</span>
 		</button>
 	</div>
 </div>
@@ -280,39 +334,51 @@ export default class HeroEditor extends HTMLElement {
   }
 
   async writeJavaScript() {
+    const el = this.shadowRoot.querySelector('.javascript');
     this.disableButton(false);
+    el.classList.add('btn--loading', 'javascript-loading');
     await typewriter.deleteAll().typeString(JAVASCRIPT).start();
     this.disableButton(true);
+    el.classList.remove('btn--loading', 'javascript-loading');
   }
 
   async writeTypeScript() {
+    const el = this.shadowRoot.querySelector('.typescript');
+    this.disableButton(false);
+    el.classList.add('btn--loading', 'typescript-loading');
     this.disableButton(false);
     await typewriter.deleteAll().typeString(TYPESCRIPT).start();
     this.disableButton(true);
+    el.classList.remove('btn--loading', 'typescript-loading');
   }
 
   async writeGolang() {
+    const el = this.shadowRoot.querySelector('.golang');
     this.disableButton(false);
+    el.classList.add('btn--loading', 'golang-loading');
     await typewriter.deleteAll().typeString(GOLANG).start();
     this.disableButton(true);
+    el.classList.remove('btn--loading', 'golang-loading');
   }
 
   async writeJava() {
+    const el = this.shadowRoot.querySelector('.java');
     this.disableButton(false);
+    el.classList.add('btn--loading', 'java-loading');
     await typewriter.deleteAll().typeString(JAVA).start();
     this.disableButton(true);
+    el.classList.remove('btn--loading', 'java-loading');
   }
 
   disableButton(state) {
     let elements = this.shadowRoot.querySelectorAll('#lang-button');
-    elements.forEach((button) => {
-      console.log(button, state);
+    elements.forEach((element) => {
       if (state) {
-        button.removeAttribute("disabled", "");
-        button.setAttribute("enabled", "");
+        element.removeAttribute("disabled", "");
+        element.setAttribute("enabled", "");
       } else {
-        button.removeAttribute("enabled", "");
-        button.setAttribute("disabled", "");
+        element.removeAttribute("enabled", "");
+        element.setAttribute("disabled", "");
       }
     });
   }
